@@ -77,11 +77,11 @@ WSGI_APPLICATION = 'MyZikMan.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'MyZikMan',
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-        'USER': 'root',
-        'PASSWORD': 'admin',
+        'NAME': '',
+        'HOST': '',
+        'PORT': '',
+        'USER': '',
+        'PASSWORD': '',
     }
 }
 
