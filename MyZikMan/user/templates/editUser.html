@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>MyZikMan</h1>
+    <form method="POST" action="/updateUser/{{user.id}}">
+        {% csrf_token %}
+            <h3>Update Details</h3>
+            <p>Name:
+                <input type="text" name="userName" value="{{user.userName}}" />
+            </p>
+            <p>Email:
+                <input type="email" name="userEmail" value="{{user.userEmail}}" />
+            </p>
+            <p>Instrument:
+                <input type="text" name="userInstrument" value="{{user.userInstrument}}" />
+            </p>
+            <p>Band:
+                <select name="userBand" required="" id="id_userBand">
+                <option value="" selected="">---------</option>
+                {% for band in bands %}
+                <option value={{ band.id }}>{{ band.bandName }} </option>
+                {% endfor %}
+                </select>
+            </p>
+            <button type="submit" class="submit">Update</button>
+    </form>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Record</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>MyZikMan</h1>
+    <a href="/createUser" class="newRec"><button>Add New User</button></a>
+    <br>
+    <br>
+    <table>
+        <thead>
+            <tr>
+                <th>User Name</th>
+                <th>User Email</th>
+                <th>User Instrument</th>
+                <th>User Band</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{user.userName}}</td>
+                <td>{{user.userEmail}}</td>
+                <td>{{user.userInstrument}}</td>
+                <td>{{user.userBand}}</td>
+                <td class="actions">
+                    <a href="/editUser/{{ user.id }}" class="edits">Update</a> |
+                    <a href="/deleteUser/{{user.id}}" class="deletes">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <a href="/createBand" class="newRec"><button>Add New Band</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Band Name</th>
+                <th>Band Email</th>
+                <th>Band Style</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for band in bands %}
+            <tr>
+                <td>{{band.bandName}}</td>
+                <td>{{band.bandEmail}}</td>
+                <td>{{band.bandStyle}}</td>
+                <td class="actions">
+                    <a href="/editBand/{{ band.id }}" class="edits">Update</a> |
+                    <a href="/deleteBand/{{band.id}}" class="deletes">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

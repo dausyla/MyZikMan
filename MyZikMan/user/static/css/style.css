@@ -1,0 +1,90 @@
+body {
+    background-color : #EEEEEE;
+    margin-left : 15%;
+    margin-right : 15%;
+    margin-top : 1%;
+    font-family : segoe UI;
+}
+
+table{
+    background-color : peru;
+    margin : auto;
+    width : 100%;
+}
+
+th,td{
+    padding:15px;
+    background-color: #eeeeee;
+}
+
+.newRec{
+    color : white;
+    text-decoration: none;
+}
+
+.newRec button{
+    padding : 10px;
+    border-width : 0;
+    color : white;
+    background-color : peru;
+    float : right;
+    margin-top : 2%;
+    margin-bottom : 2%;
+    cursor : pointer;
+}
+
+.newRec button:hover{
+    background-color : sienna;
+}
+
+.actions{
+    text-align : center;
+}
+
+.edits,.deletes{
+    text-decoration : none;
+    color : sienna;
+}
+
+h1{
+    color : white;
+    background-color: peru;
+    padding-left : 5%;
+    padding-top : 5%;
+    padding-bottom : 2%;
+    font-size : 75px;
+}
+
+h3{
+    color : sienna;
+    font-size : 40px;
+}
+
+.submit{
+    padding : 10px;
+    border-width : 0;
+    color : white;
+    background-color : peru;
+    float : left;
+    margin-top : 2%;
+    margin-bottom : 2%;
+    cursor : pointer;
+}
+
+.submit:hover{
+    background-color : sienna;
+}
+
+input[type=text], input[type=email]{
+    padding : 1%;
+    margin : 1%;
+    border-color : peru;
+}
+
+input[type=text]:focus, input[type=email]:focus {
+    border: 2px solid sienna;
+}
+
+p{
+    font-size : large;
+}
