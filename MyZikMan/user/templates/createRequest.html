@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New User</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>MyZikMan</h1>
+    <a href="/requests" class="newRec" style="--floating:right"><button>back</button></a>
+    <form method="POST" action="/createRequest">
+        {% csrf_token %}
+        <div>
+            <h2>Create Request</h2>
+            <div>
+                <p>Request Title: {{ form.requestTitle }}</p>
+            </div>
+            <div>
+                <p>Request Instrument: {{ form.requestInstrument }}</p>
+            </div>
+            <div>
+                <p>Request Description: <br>{{ form.requestDescription }}</p>
+            </div>
+            {% for message in messages %}
+            {{message}}
+            {% endfor %}
+            <div>
+                <button type="submit" class="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

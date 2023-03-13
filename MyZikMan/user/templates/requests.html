@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Record</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>MyZikMan</h1>
+
+    {% for message in messages %}
+    <p>{{message}}</p>
+    {% endfor %}
+
+    {% if user.is_authenticated %}
+    <h2>Welcome {{usr.username}}!</h2>
+    <a href="/logout" class="newRec" style="--floating:left"><button>logout</button></a>
+    {% else %}
+    <a href="/register" class="newRec" style="--floating:left"><button>Register</button></a>
+    <a href="/login" class="newRec" style="--floating:left"><button>Login</button></a>
+    {% endif %}
+
+    <a href="/createRequest" class="newRec" style="--floating:right"><button>Create New Request</button></a>
+    <table>
+        <thead>
+            <tr>
+                <th>Request Title</th>
+                <th>Request Creator</th>
+                <th>Request Instrument</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for req in requests %}
+            <tr>
+                <td>{{req.requestTitle}}</td>
+                <td>{{req.requestCreator}}</td>
+                <td>{{req.requestInstrument}}</td>
+                <td class="actions">
+                    {% if req.requestCreator.id == user.id %}
+                    <a href="/editRequest/{{ req.id }}" class="edits">Update</a> |
+                    <a href="/deleteRequest/{{ req.id }}" class="deletes">Delete</a>
+                    {% else %}
+                    <a href="/seeRequest/{{ req.id }}">See Request</a>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

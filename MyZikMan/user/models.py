@@ -1,24 +1,17 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-class Band(models.Model):
-    bandName = models.CharField(max_length=50)
-    bandEmail = models.EmailField()
-    bandStyle = models.CharField(max_length=50)
+Instruments = ["Guitare", "Piano"]
 
-    def __str__(self):
-        return "%s " %(self.bandName)
 
-    class Meta:
-        db_table = "band"
-
-class User(models.Model):
-    userName = models.CharField(max_length=50)
-    userEmail = models.EmailField()
-    userInstrument = models.CharField(max_length=50)
-    userBand = models.ForeignKey(Band, on_delete=models.CASCADE)
+class Request(models.Model):
+    requestTitle = models.CharField(max_length=50)
+    requestCreator = models.ForeignKey(User, on_delete=models.CASCADE)
+    requestInstrument = models.CharField(max_length=50, blank=True)
+    requestDescription = models.TextField(max_length=500)
 
     def __str__(self):
-        return "%s " %(self.userName)
+        return "%s " % (self.RequestTitle)
 
     class Meta:
-        db_table = "user"
+        db_table = "request"

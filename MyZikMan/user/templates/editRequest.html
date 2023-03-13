@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+
+<body>
+    <h1>MyZikMan</h1>
+    <a href="/requests" class="newRec" style="--floating:right"><button>back</button></a>
+    <form method="POST" action="/editRequest/{{req.id}}">
+        {% csrf_token %}
+        <h2>Update Request</h2>
+        <p>Request Title:
+            <input type="text" name="requestTitle" value="{{req.requestTitle}}" />
+        </p>
+        <p>Request Instrument:
+            <input type="text" name="requestInstrument" value="{{req.requestInstrument}}" />
+        </p>
+        <p>Request Description:<br>
+            <textarea name="requestDescription" maxlength="500" cols="40"
+                rows="10">{{req.requestDescription}}</textarea>
+        </p>
+        {% for message in messages %}
+        {{message}}
+        {% endfor %}
+        <button type="submit" class="submit">Update</button>
+    </form>
+</body>
+
+</html>
